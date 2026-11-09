@@ -8,11 +8,14 @@ Plataforma de monitoramento e alerta de riscos urbanos (alagamentos, ilhas de ca
 ## Integrantes
 | Nome completo | RM |
 |---|---|
-| _preencher_ | _preencher_ |
+| Ana Clara Silveira Salvatico | 555389 |
+| Fernanda Pereira Molina Teixeira | 552587 |
+| Vinicius Eiki Franca | 555150 |
 
 ## Links
-- Protótipo (deploy): _preencher (ex.: GitHub Pages)_
-- Vídeo de demonstração: _preencher_
+- Protótipo (deploy): <https://anasalvatico.github.io/urip-urban-risk-platform/>
+- Repositório: <https://github.com/anasalvatico/urip-urban-risk-platform>
+- Vídeo de demonstração: <https://youtu.be/0Vn2jyf10r8>
 - Documentação: [`docs/URIP_Documentacao_GS2026.2.pdf`](docs/URIP_Documentacao_GS2026.2.pdf)
 
 ## Como executar

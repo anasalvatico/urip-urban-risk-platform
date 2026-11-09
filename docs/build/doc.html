@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>URIP, Documentação técnica, Global Solution 2026.2</title>
+<style>
+@page{size:A4;margin:16mm 15mm 18mm}
+@page land{size:A4 landscape;margin:9mm 8mm 13mm}
+*{box-sizing:border-box}
+html{font-family:Inter,"Segoe UI",Arial,sans-serif;color:#14202B;font-size:10pt;line-height:1.45}
+body{margin:0}
+h1{font-size:19pt;margin:0 0 6pt;color:#111;letter-spacing:-.01em}
+h2{font-size:14pt;margin:18pt 0 6pt;color:#111;border-bottom:1px solid #888;padding-bottom:3pt;break-after:avoid}
+h3{font-size:11pt;margin:12pt 0 4pt;color:#222;break-after:avoid}
+p{margin:4pt 0}ul,ol{margin:4pt 0 4pt 16pt;padding:0}li{margin:2pt 0}
+small,.sm{font-size:8.5pt;color:#556574}
+.pb{break-before:page}.nb{break-inside:avoid}
+table{border-collapse:collapse;width:100%;margin:6pt 0 10pt;font-size:8.8pt}
+th{background:#E8ECF0;color:#111;text-align:left;padding:5pt 6pt;font-weight:600}
+td{padding:5pt 6pt;border-bottom:1px solid #DFE6EC;vertical-align:top}
+tr{break-inside:avoid}tbody tr:nth-child(even) td{background:#F7F9FB}
+td.id{font-weight:600;white-space:nowrap}
+.pill{font-weight:600;white-space:nowrap}
+
+.ph{background:#FFF176;padding:0 3pt;border-radius:2pt;font-weight:600}
+.box{border:1px solid #ccc;background:#F6F6F6;border-radius:6pt;padding:7pt 10pt;margin:8pt 0;break-inside:avoid}
+.box.warn,.box.ok{background:#F6F6F6;border-color:#ccc}
+.formula{font-family:ui-monospace,Menlo,Consolas,monospace;background:#F3F6F9;border-radius:4pt;padding:5pt 8pt;margin:5pt 0;font-size:9pt}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10pt}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8pt}
+.persona{border:1px solid #DFE6EC;border-radius:8pt;padding:9pt 11pt;break-inside:avoid;background:#fff}
+.persona h3{margin:0 0 2pt;font-size:11pt}.persona .role{font-size:8.5pt;color:#556574;margin-bottom:4pt}
+.persona b{color:#111}.persona p{margin:3pt 0;font-size:9pt}
+/* capa */
+.cover{min-height:255mm;display:flex;flex-direction:column}
+.cover .band{border-top:4px solid #0B2F4E;border-bottom:1px solid #999;padding:14pt 0 12pt;margin-bottom:14pt}
+.cover .band small{color:#444;font-size:9.5pt}
+.cover .band h1{color:#111;font-size:22pt;margin:8pt 0}.cover .band p{color:#333;font-size:10.5pt;margin:4pt 0}
+.cover table th{width:70%}.cover table td{font-size:10pt;padding:7pt 8pt}
+.cover .links td:first-child{width:24%;font-weight:700;color:#0B2F4E;background:#F3F6F9}
+.toc{columns:2;column-gap:20pt;font-size:9.5pt;margin-top:6pt}.toc div{break-inside:avoid;padding:2pt 0;border-bottom:1px dotted #C5D0DA}
+/* páginas de diagrama */
+.land{page:land;break-before:page;break-after:page}
+.land h2{margin:0 0 4pt;font-size:13pt}.land .cap{font-size:8.5pt;color:#556574;margin:0 0 3pt}
+.land svg{display:block;width:100%;height:auto;max-height:166mm;margin:0 auto}
+/* telas */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:9pt}.fig{break-inside:avoid;margin:0}
+.fig img{width:100%;border:1px solid #DFE6EC;border-radius:5pt;display:block}
+.fig figcaption{font-size:8.3pt;color:#33414E;margin-top:3pt;line-height:1.3}.fig figcaption b{color:#0B2F4E}
+.mob{display:grid;grid-template-columns:repeat(3,1fr);gap:10pt;max-width:140mm;margin:6pt auto}.mob img{width:100%;border:1px solid #DFE6EC;border-radius:10pt}
+.mx td,.mx th{font-size:8pt;padding:4pt 5pt}.mx td:first-child{white-space:nowrap}
+</style></head><body>
+
+<!-- ================= CAPA ================= -->
+<section class="cover">
+  <div class="band"><small>FIAP · Global Solution 2026.2 · Engenharia de Software</small>
+    <h1>Urban Risk Intelligence Platform</h1>
+    <p>Documentação técnica e protótipo.</p></div>
+  <h3>Integrantes</h3>
+  <table><thead><tr><th>Nome completo</th><th>RM</th></tr></thead><tbody>
+  {{INTEGRANTES}}</tbody></table>
+  <h3>Links de entrega</h3>
+  <table class="links"><tbody>
+    <tr><td>Protótipo</td><td>{{LINK_PROTOTIPO}}</td></tr>
+    <tr><td>Repositório (GitHub)</td><td>{{LINK_REPOSITORIO}}</td></tr>
+    <tr><td>Vídeo de demonstração</td><td>{{LINK_VIDEO}}</td></tr></tbody></table>
+  <h3>Conteúdo deste documento</h3>
+  <div class="toc"><div>1. Contexto, problema e objetivos</div><div>2. Público-alvo e personas</div><div>3. Requisitos funcionais (RF)</div><div>4. Requisitos não funcionais (RNF), ISO 25010</div><div>5. Regras de negócio e de priorização</div><div>6. Diagrama de Sequência</div><div>7. Diagrama de Estados</div><div>8. Arquitetura em camadas</div><div>9. Protótipo: telas e fluxo principal</div><div>10. Rastreabilidade e coerência entre artefatos</div><div>11. Verificação, limitações e próximos passos</div></div>
+  <p style="margin-top:auto" class="sm">Este documento reúne os requisitos, os diagramas UML, a arquitetura e a descrição do protótipo da nossa solução para o tema Urban Risk Intelligence Platform.</p>
+</section>
+
+<!-- ================= 1 ================= -->
+<h2 class="pb">1. Contexto, problema e objetivos</h2>
+<h3>Problema</h3>
+<p>Alagamentos, ilhas de calor e quedas de energia, água ou transporte acontecem com frequência nas cidades e pesam mais sobre quem tem menos condições de se proteger. Os dados sobre eles existem, mas ficam espalhados: sensores da prefeitura, bases públicas, avisos das concessionárias e mensagens em grupos de WhatsApp. Em geral não dizem de onde vieram nem se dá para confiar neles. O morador fica sem saber o que é verdade, o agente da Defesa Civil perde tempo separando boato de ocorrência real, e o operador de um serviço muitas vezes só fica sabendo do problema pela imprensa.</p>
+<h3>O que propomos</h3>
+<p>A URIP junta essas fontes num fluxo só: o dado chega, é validado, recebe um nível de risco e um nível de confiança, e a combinação dos dois define quem será avisado e por qual canal. A ideia principal é separar "quão grave é" de "quanto confiamos na informação". Se a evidência é forte, o alerta sai rápido. Se há dúvida, um agente valida antes de avisar a população. Assim reduzimos falsos alarmes sem atrasar os alertas verdadeiros (regras RN-01 a RN-04).</p>
+<h3>Indicadores de sucesso</h3>
+<table><thead><tr><th style="width:24%">Indicador (do desafio)</th><th>Meta mensurável</th><th style="width:30%">Onde se observa</th></tr></thead><tbody>
+<tr><td><b>Tempo de atualização dos dados</b></td><td>Medição → painel em ≤ 60 s (p95); dado → notificação de alerta em ≤ 60 s (p95), típico ≤ 10 s</td><td>RNF01 · KPI do painel · Análises · Simulador</td></tr>
+<tr><td><b>Qualidade dos alertas</b></td><td>≥ 90% de alertas públicos procedentes; falsos positivos ≤ 10%; todo alerta exibe origem e confiança</td><td>RF05, RF11 · Análises · Origem e confiança</td></tr>
+<tr><td><b>Facilidade de uso</b></td><td>Registrar ocorrência em ≤ 3 etapas e ≤ 60 s; SUS ≥ 80; WCAG 2.1 AA</td><td>RNF05 · Registro comunitário</td></tr></tbody></table>
+<h3>Escopo</h3>
+<p>Dentro do escopo: ingestão e normalização, validação, cálculo de confiança e risco, ciclo de vida do evento, alertas e notificações, painel, registro comunitário, validação por agentes, análises, saúde das fontes e gestão de privacidade. Fora do escopo desta entrega: previsão meteorológica própria, integrações reais com APIs de terceiros (simuladas no protótipo), autenticação corporativa real e envio real de SMS/push.</p>
+
+<!-- ================= 2 ================= -->
+<h2>2. Público-alvo e personas</h2>
+<p>Definimos três perfis principais (morador, agente da Defesa Civil e operador de serviço público). Incluímos ainda uma persona idosa, para lembrar que nem todo usuário tem familiaridade com aplicativos. As personas são fictícias e foram montadas a partir de situações comuns descritas no enunciado.</p>
+<div class="grid2">
+<div class="persona"><h3>Ana Souza, 34, Moradora</h3><div class="role">Técnica de enfermagem · mãe de duas crianças · Jardim das Águas · smartphone Android</div>
+<p>Quer: ser avisada a tempo de proteger a família e chegar ao trabalho; saber o que fazer; ajudar a vizinhança.</p>
+<p>Problemas hoje: já foi surpreendida por alagamento; recebe “alertas” de grupos de mensagens sem saber se são verdadeiros; não vê para quem reportar.</p>
+<p>Como a plataforma ajuda: recebe alertas da sua área (T06), entende a gravidade e a confiança (T04, T05), registra ocorrências em poucos toques (T07) e controla seus dados (T11).</p></div>
+<div class="persona"><h3>Carlos Menezes, 45, Agente da Defesa Civil</h3><div class="role">Coordenador regional · 15 anos de atuação · usa painel web e rádio</div>
+<p>Quer: priorizar equipes onde o risco é maior; evitar deslocamentos por falso positivo; registrar decisões.</p>
+<p>Problemas hoje: informações em planilhas, telefone e redes sociais; não sabe a origem nem a idade do dado; sobrecarga em dias de chuva.</p>
+<p>Como a plataforma ajuda: fila de validação priorizada por risco e confiança, com prazo (T08); origem e confiança de cada dado (T05); histórico e ciclo de vida (T04); análises (T09).</p></div>
+<div class="persona"><h3>Marina Lopes, 38, Operadora de serviço público</h3><div class="role">Centro de operações de concessionária/operadora · acompanha energia, água e transporte</div>
+<p>Quer: comunicar interrupções e prazos de religação; entender o impacto na população; cruzar sua telemetria com relatos.</p>
+<p>Problemas hoje: descobre falhas pela imprensa; sensores sem contexto; dificuldade de saber se a própria API está chegando.</p>
+<p>Como a plataforma ajuda: acompanha eventos de serviços essenciais (T02, T03), saúde e latência das fontes (T10) e indicadores (T09).</p></div>
+<div class="persona"><h3>Jorge Lima, 68, Morador idoso (secundária)</h3><div class="role">Aposentado · telefone básico · baixa familiaridade digital · mora sozinho</div>
+<p>Quer: receber avisos simples e saber se deve sair de casa.</p>
+<p>Problemas hoje: textos longos, ícones sem rótulo, dependência de internet.</p>
+<p>Como a plataforma ajuda: SMS para alertas críticos; textos curtos e claros; risco sempre com <i>palavra</i>, não só cor; alvos de toque grandes; consentimento explícito (T01, RNF05).</p></div>
+</div>
+
+<!-- ================= 3 ================= -->
+<h2 class="pb">3. Requisitos funcionais (RF)</h2>
+<p>Prioridade Alta: essencial para o produto funcionar. Média: importante, mas o sistema funciona sem ele. A coluna “Tela” indica onde o requisito aparece no protótipo (seção 9).</p>
+<table><thead><tr><th>ID</th><th>Descrição</th><th>Prioridade</th><th>Tela</th></tr></thead><tbody>
+{{RF}}</tbody></table>
+
+<!-- ================= 4 ================= -->
+<h2 class="pb">4. Requisitos não funcionais (RNF), ISO/IEC 25010</h2>
+<p>Classificamos os requisitos pelas características da ISO/IEC 25010. Os itens exigidos no enunciado ficaram assim: tempo de atualização (RNF01), disponibilidade (RNF02 e RNF03), escalabilidade (RNF04), usabilidade (RNF05) e segurança/LGPD (RNF06 a RNF08). A ISO 25010 não tem uma categoria própria para LGPD, então tratamos o tema dentro de Segurança (confidencialidade e responsabilização).</p>
+<table><thead><tr><th>ID</th><th style="width:19%">Característica ISO 25010 › subcaracterística</th><th>Requisito (mensurável)</th><th style="width:22%">Verificação / onde aparece</th></tr></thead><tbody>
+{{RNF}}</tbody></table>
+
+<!-- ================= 5 ================= -->
+<h2 class="pb">5. Regras de negócio e de priorização de alertas</h2>
+<p>Estas regras estão implementadas em <code>js/engine.js</code> e são as mesmas que o protótipo usa nas telas. Os pesos e limiares (0,35, 0,25 etc.) foram escolhidos por nós com base em raciocínio, não em dados reais, e por isso ficaram fáceis de alterar (RNF09). Numa versão real, precisariam ser calibrados com histórico.</p>
+
+<h3>RN-01 · Nível de confiança do dado (0–100)</h3>
+<div class="formula">C = 0,35·F + 0,25·Fr + 0,25·Co + 0,15·Q</div>
+<table><thead><tr><th style="width:18%">Componente</th><th>Como é calculado</th></tr></thead><tbody>
+<tr><td><b>F</b> · Fonte (35%)</td><td>Maior confiabilidade entre as fontes do evento. Sensor municipal calibrado e API oficial: 85–95 · satélite: 80 · comunidade verificada: 55 · comunidade anônima: 35 · verificação de agente: 100.</td></tr>
+<tr><td><b>Fr</b> · Frescor (25%)</td><td>Idade da leitura mais recente: ≤ 5 min = 100 · ≤ 15 min = 80 · ≤ 60 min = 50 · ≤ 180 min = 25 · acima = 0. Para fenômenos lentos (ilha de calor) a janela é multiplicada por 3.</td></tr>
+<tr><td><b>Co</b> · Corroboração (25%)</td><td>Número de origens independentes que concordam: 0 = 0 · 1 = 25 · 2 = 65 · ≥ 3 = 100. Cada sensor/API distinta conta como uma origem; relatos da comunidade contam como 1 origem (1–2 relatos) ou 2 origens (≥ 3 usuários distintos).</td></tr>
+<tr><td><b>Q</b> · Qualidade (15%)</td><td>Média da qualidade das observações (0–100): valor fisicamente plausível, sensor calibrado, coerência com vizinhos, foto consistente (sem EXIF contraditório).</td></tr></tbody></table>
+
+<h3>RN-02 · Classificação do nível de confiança</h3>
+<p><b>Alta</b> C ≥ 75, pode orientar decisões e alertas ao público.   <b>Média</b> 50 ≤ C ≤ 74, há evidências, mas falta corroboração ou dado recente; exige validação humana para alerta público.   <b>Baixa</b> C &lt; 50, dado isolado, antigo ou pouco confiável; não gera alerta público. A origem do dado e a decomposição de C são sempre exibidas (T05).</p>
+
+<h3>RN-03 · Nível de risco (0–100)</h3>
+<div class="formula">R = 0,5·S + 0,3·E + 0,2·T</div>
+<table><thead><tr><th style="width:18%">Componente</th><th>Como é calculado</th></tr></thead><tbody>
+<tr><td><b>S</b> · Severidade</td><td><i>Alagamento</i> (nível da água): &lt; 5 cm = 10 · 5–15 = 40 · 16–30 = 70 · &gt; 30 = 100. <i>Ilha de calor</i> (temperatura de superfície): &lt; 32 °C = 10 · 32–36 = 40 · 37–40 = 70 · &gt; 40 = 100. <i>Energia, água, transporte</i>: serviço crítico afetado (hospital, UPA) = 100 · &gt; 5.000 afetados ou &gt; 4 h = 75 · ≥ 500 afetados ou ≥ 1 h = 50 · demais = 20.</td></tr>
+<tr><td><b>E</b> · Exposição</td><td>E = mín(100, população em 500 m ÷ 100 + 20 × locais sensíveis), em que local sensível é escola, creche, hospital/UPA ou asilo.</td></tr>
+<tr><td><b>T</b> · Tendência</td><td>Subindo = 100 · Estável = 50 · Diminuindo = 10 (comparação das últimas leituras).</td></tr></tbody></table>
+<p><b>Níveis:</b> <b>Crítico</b> R ≥ 80 · <span>Alto</span> 60–79 · <b>Moderado</b> 40–59 · <b>Baixo</b> &lt; 40. <b>Ordem de prioridade (RN-09):</b> risco decrescente; em empate, confiança decrescente.</p>
+
+<h3>RN-04 · Matriz de decisão: risco × confiança</h3>
+<table><thead><tr><th>Risco</th><th>Confiança Alta (≥ 75)</th><th>Confiança Média (50–74)</th><th>Confiança Baixa (&lt; 50)</th></tr></thead><tbody>
+<tr><td><b>Crítico</b></td><td><b>Alerta público imediato</b> (push + SMS)</td><td>Alerta público com selo <i>“em verificação”</i> + validação prioritária</td><td>Somente agentes, prioridade máxima</td></tr>
+<tr><td><b>Alto</b></td><td><b>Alerta público</b> (push)</td><td>Alerta preliminar a agentes; público após confirmação</td><td>Fila de validação</td></tr>
+<tr><td><b>Moderado</b></td><td>Aviso informativo no aplicativo</td><td>Aviso in-app após confirmação</td><td>Fila de validação</td></tr>
+<tr><td><b>Baixo</b></td><td colspan="3">Registro no painel, sem notificação (descarte por TTL se não corroborado)</td></tr></tbody></table>
+
+<h3>Demais regras</h3>
+<table><thead><tr><th style="width:12%">ID</th><th>Regra</th></tr></thead><tbody>
+<tr><td class="id">RN-05</td><td><b>Validação e prazos.</b> O evento <i>confirma sozinho</i> quando C ≥ 75; com risco Crítico, a confirmação é provisória a partir de C ≥ 60 (mantém selo “em verificação”). Caso contrário aguarda agente. Prazo (SLA) de validação: Crítico 5 min · Alto 10 · Moderado 30 · Baixo 60. Agente pode confirmar (sua verificação vira uma fonte de confiabilidade 100) ou descartar com motivo.</td></tr>
+<tr><td class="id">RN-06</td><td><b>Encerramento.</b> O evento vai para <i>Encerrado</i> quando os indicadores ficam abaixo do limiar por 3 ciclos consecutivos de leitura, ou por decisão do agente. Novo episódio no mesmo local cria um novo evento vinculado.</td></tr>
+<tr><td class="id">RN-07</td><td><b>Escalonamento.</b> Se o nível de risco sobe acima do último nível alertado e a matriz RN-04 exige alerta público, o evento retorna a <i>Alerta emitido</i> e reemite a notificação. Reduções de risco geram apenas atualização, sem novo alerta.</td></tr>
+<tr><td class="id">RN-08</td><td><b>Privacidade.</b> Coletar somente o necessário (bairro de interesse; localização apenas aproximada, ~100 m, e só com consentimento). Autor de relato pseudonimizado; EXIF removido; retenção de relatos por 90 dias. Alertas críticos são enviados por proteção da vida (LGPD, art. 7º, VII) e não podem ser desativados; demais canais dependem de consentimento.</td></tr>
+<tr><td class="id">RN-09</td><td><b>Ordenação.</b> Listas e painel ordenam por risco (R) decrescente e, em empate, por confiança (C) decrescente; eventos ativos antes de encerrados.</td></tr></tbody></table>
+
+<div class="box ok nb"><b>Exemplo (evento E-1042, alagamento na Rua do Córrego).</b> Observações: sensor de nível 38 cm (rel. 92, há 0,5 min, qualidade 96), pluviômetro 62 mm/h (90; 94), API da Defesa Civil “chuva forte” (95; 100) e 7 relatos de moradores (55; 72).  <b>Confiança:</b> F = 95 (maior fonte) · Fr = 100 · Co = 100 (5 origens) · Q = 91 ⇒ C = 0,35·95 + 0,25·100 + 0,25·100 + 0,15·91 = <b>97 (Alta)</b>.  <b>Risco:</b> S = 100 (38 cm &gt; 30) · E = 62 + 20 = 82 (6.200 pessoas + 1 escola) · T = 100 (subindo) ⇒ R = 50 + 24,6 + 20 = <b>95 (Crítico)</b>.  <b>Decisão (RN-04):</b> Crítico × Alta ⇒ alerta público imediato por push e SMS. Esse cálculo está nos testes automatizados.</div>
+
+<!-- ================= 6 ================= -->
+<section class="land"><h2>6. Diagrama de Sequência, recebimento e disparo de um alerta</h2>
+<p class="cap">Fluxo completo: dado recebido (sensor, base pública ou registro comunitário) → validação → classificação de risco → notificação ao usuário. Os participantes correspondem aos componentes da arquitetura (seção 8). Mensagens com seta cheia são síncronas; setas abertas, assíncronas; tracejadas, retornos.</p>
+{{SVG:sequencia}}</section>
+
+<h3 style="margin-top:0">Leitura do diagrama</h3>
+<table><thead><tr><th style="width:9%">Passos</th><th>O que acontece</th><th style="width:24%">Regras / requisitos</th></tr></thead><tbody>
+<tr><td class="id">1–2</td><td>A fonte envia o dado ao Gateway de Ingestão, que autentica a fonte (token/mTLS) e normaliza o formato; para relatos comunitários, o autor é pseudonimizado já aqui.</td><td>RF01–RF03 · RNF06, RNF08</td></tr>
+<tr><td class="id">3–4</td><td>O Serviço de Validação checa esquema, plausibilidade física, duplicidade e se a fonte está ativa. Se inválido, o dado é rejeitado e registrado (e a saúde da fonte é afetada).</td><td>RF04 · RF14</td></tr>
+<tr><td class="id">5–6</td><td>A Gestão de Eventos correlaciona o dado a um evento existente (mesmo tipo e área) ou cria um novo, persistindo a observação.</td><td>RF07 · RN-06</td></tr>
+<tr><td class="id">7–8</td><td>O Motor de Regras calcula confiança <i>C</i> e risco <i>R</i> e devolve a decisão da matriz.</td><td>RF05, RF06 · RN-01…04</td></tr>
+<tr><td class="id">9</td><td>A Gestão de Eventos transita o estado: Reportado → Em validação → Confirmado (automático se C ≥ 75; senão aguarda agente).</td><td>RF07 · RN-05</td></tr>
+<tr><td class="id">10–12</td><td>Se a matriz exige alerta público, o Serviço de Notificação seleciona destinatários da área (por preferências e consentimento, sem expor identidade) e envia push/SMS/in-app com origem e confiança.</td><td>RF08, RF11, RF12 · RNF01, RNF08</td></tr>
+<tr><td class="id">13</td><td>Com risco Alto e confiança Média, notifica apenas agentes (alerta preliminar) para validação; com confiança Baixa, o evento fica na fila sem notificar o público.</td><td>RF13 · RN-04</td></tr></tbody></table>
+
+<!-- ================= 7 ================= -->
+<section class="land"><h2>7. Diagrama de Estados, ciclo de vida de um evento de risco</h2>
+<p class="cap">Estados, eventos de transição, condições (entre colchetes) e ações. Estados finais: <b>Encerrado</b> e <b>Descartado</b>. A implementação rejeita qualquer transição fora deste diagrama (<code>URIP_ENGINE.TRANSITIONS</code>).</p>
+{{SVG:estados}}</section>
+
+<h3 style="margin-top:0">Tabela de transições</h3>
+<table><thead><tr><th>De</th><th>Para</th><th>Evento</th><th>Condição (guarda)</th><th>Ação</th></tr></thead><tbody>
+<tr><td>● (início)</td><td>Reportado</td><td>dadoRecebido</td><td>dado passou pela ingestão</td><td>criar evento; normalizar e deduplicar</td></tr>
+<tr><td>Reportado</td><td>Em validação</td><td>dadoRecebido</td><td>dado válido (RF04)</td><td>correlacionar; calcular confiança</td></tr>
+<tr><td>Reportado</td><td>Descartado</td><td>dadoInválido</td><td>fora de plausibilidade, spam ou fonte offline</td><td>registrar motivo</td></tr>
+<tr><td>Em validação</td><td>Confirmado</td><td>confirmar</td><td>C ≥ 75 (Crítico: C ≥ 60) <b>ou</b> agente confirma</td><td>aplicarPolítica (RN-04)</td></tr>
+<tr><td>Em validação</td><td>Descartado</td><td>descartar</td><td>agente rejeita, duplicado, ou C &lt; 30 sem corroboração após 30 min</td><td>registrar motivo</td></tr>
+<tr><td>Confirmado</td><td>Alerta emitido</td><td>emitirAlerta</td><td>matriz RN-04 exige alerta público</td><td>notificar público (push/SMS/in-app)</td></tr>
+<tr><td>Confirmado</td><td>Em monitoramento</td><td>semAlertaPúblico</td><td>RN-04: informativo ou registro</td><td>aviso in-app opcional</td></tr>
+<tr><td>Alerta emitido</td><td>Em monitoramento</td><td>entregaConcluída</td><td>notificações entregues</td><td>acompanhar a cada ciclo</td></tr>
+<tr><td>Em monitoramento</td><td>Alerta emitido</td><td>riscoEscalou</td><td>nível de risco &gt; último nível alertado (RN-07)</td><td>reemitir alerta</td></tr>
+<tr><td>Em monitoramento</td><td>Encerrado</td><td>normalizou</td><td>indicadores abaixo do limiar por 3 ciclos, ou agente encerra (RN-06)</td><td>arquivar e consolidar</td></tr></tbody></table>
+
+<!-- ================= 8 ================= -->
+<section class="land"><h2>8. Visão da arquitetura em camadas</h2>
+<p class="cap">Apresentação, aplicação/negócio e dados, com as fontes externas (sensores, APIs públicas, comunidade) e os provedores de entrega. Em destaque dourado (cadeado): onde a proteção de dados pessoais atua. Notificação e processamento de eventos ficam na camada de aplicação.</p>
+{{SVG:arquitetura}}</section>
+
+<h3 style="margin-top:0">Componentes e decisões arquiteturais</h3>
+<table><thead><tr><th style="width:22%">Componente</th><th>Responsabilidade</th><th style="width:20%">Requisitos / diagramas</th></tr></thead><tbody>
+<tr><td><b>Fontes externas</b></td><td>Sensores IoT (MQTT/LoRaWAN), APIs e bases públicas (Defesa Civil, concessionárias, operadora de transporte, satélite) e comunidade (app/web). Não fazem parte do sistema; entram apenas pela Ingestão.</td><td>RF01–RF03 · seq. 1</td></tr>
+<tr><td><b>Apresentação</b></td><td>PWA do morador, painel de agentes/operadores e portal do titular (LGPD). Atualização em tempo real via WebSocket/SSE. Todo acesso passa pelo API Gateway.</td><td>RF09–RF18 · RNF05</td></tr>
+<tr><td><b>API Gateway e autenticação</b></td><td>OIDC, MFA para agentes, RBAC, WAF, limitação de taxa, TLS 1.3. Primeiro ponto de proteção de dados pessoais.</td><td>RF17 · RNF06</td></tr>
+<tr><td><b>Ingestão e Normalização</b></td><td>Adaptadores por protocolo; autenticação de fonte; pseudonimização do autor; remoção de EXIF.</td><td>RF01–RF03 · RNF08</td></tr>
+<tr><td><b>Validação de Dados</b></td><td>Esquema, plausibilidade física, duplicidade, calibração e fonte ativa.</td><td>RF04 · seq. 3–4</td></tr>
+<tr><td><b>Processamento de Eventos</b></td><td>Broker de mensagens durável, particionado por região, com reentrega, idempotência e fila de mensagens mortas; desacopla ingestão de processamento e absorve picos.</td><td>RNF02–RNF04</td></tr>
+<tr><td><b>Motor de Regras</b></td><td>Calcula C e R e aplica a matriz de decisão; pesos e limiares configuráveis.</td><td>RF05, RF06 · RN-01…04</td></tr>
+<tr><td><b>Gestão de Eventos</b></td><td>Máquina de estados, correlação de dados, histórico, SLA de validação.</td><td>RF07, RF13 · diagrama de estados</td></tr>
+<tr><td><b>Serviço de Notificação</b></td><td>Seleciona audiência por área, preferências e consentimento; envia por push, SMS, e-mail e in-app via provedores; mede tempo de entrega.</td><td>RF08, RF12 · seq. 10–12</td></tr>
+<tr><td><b>Serviço de Privacidade</b></td><td>Consentimento granular, retenção e descarte, direitos do titular, trilha de auditoria, anonimização.</td><td>RF16 · RNF07, RNF08</td></tr>
+<tr><td><b>Análises e Observabilidade</b></td><td>Indicadores, saúde das fontes, métricas, logs, tracing e alarmes; base da autoescala.</td><td>RF14, RF15 · RNF01, RNF02</td></tr>
+<tr><td><b>Camada de dados</b></td><td>Série temporal (leituras), relacional + geoespacial (eventos, usuários), objetos (fotos sem EXIF), cache, auditoria imutável e cofre de chaves/backups criptografados.</td><td>RNF02, RNF06–RNF08</td></tr></tbody></table>
+<div class="grid2">
+<div class="box"><b>Escalabilidade e disponibilidade.</b> Componentes sem estado (ingestão, validação, notificação) escalam horizontalmente por política automática; o broker particiona por região (geohash); leituras do painel vêm de cache. Há ao menos duas réplicas em zonas distintas, health checks e failover; se uma fonte cai, o sistema entra em modo degradado e recalcula a confiança (RNF02, RNF03, RNF04).</div>
+<div class="box warn"><b>Proteção de dados pessoais.</b> Dados de sensores e de bases públicas não contêm dados pessoais; os pessoais (telefone, e-mail, autoria de relatos, localização) ficam só na camada relacional protegida, criptografados, com acesso por RBAC e auditoria, e são pseudonimizados antes de qualquer uso analítico (RNF06–RNF08).</div></div>
+
+<!-- ================= 9 ================= -->
+<h2 class="pb">9. Protótipo: telas e fluxo principal</h2>
+<p>Optamos por um protótipo funcional em HTML, CSS e JavaScript, sem bibliotecas externas. Ele aplica as regras da seção 5: quando o agente confirma um evento, quando alguém registra uma ocorrência ou quando disparamos o simulador, os valores são recalculados e as notificações aparecem. São 12 telas (o registro comunitário tem 3 etapas e uma tela de confirmação). Os dados são todos simulados.</p>
+<div class="box"><b>Como executar:</b> abra <code>index.html</code> em qualquer navegador (ou rode <code>python3 -m http.server</code> na pasta e acesse <code>http://localhost:8000</code>); não há instalação nem build. Link de deploy e repositório: ver primeira página. Para trocar de perfil, escolha Morador, Agente ou Operador na entrada ou no seletor do topo. Testes das regras: <code>node tests/engine.test.js</code>.</div>
+<h3>Fluxo principal (de ponta a ponta)</h3>
+<ol>
+<li><b>Entrada e consentimento (T01)</b> → escolhe perfil e aceita o recebimento de alertas (obrigatório) e opcionais.</li>
+<li><b>Painel (T02)</b> → vê o mapa e a prioridade; seleciona o alagamento crítico.</li>
+<li><b>Detalhe do alerta (T04)</b> → ciclo de vida, recomendações, por que é Crítico.</li>
+<li><b>Origem e confiança (T05)</b> → de onde vêm os dados e como a confiança 97 foi calculada.</li>
+<li><b>Central de notificações (T06)</b> → o alerta recebido, canais, tempo de entrega e origem.</li>
+<li><b>Registrar ocorrência (T07)</b> → 3 etapas; o relato reforça um evento existente ou cria novo na fila.</li>
+<li><b>Agente: validação (T08)</b> → confirma/descarta; o estado muda e o alerta é emitido conforme RN-04.</li>
+<li><b>Simulador (T12)</b> → entrada de dado de sensor: recebimento → validação → classificação → notificação, com tempos.</li>
+</ol>
+<div class="shots">
+{{SHOTS}}
+</div>
+<h3>Versão móvel</h3>
+<p class="sm">No celular o menu lateral vira uma barra inferior. Exemplos: Painel, Registro comunitário e Origem e confiança.</p>
+<div class="mob"><img src="../img/m1-painel.jpg" alt="Painel no celular"><img src="../img/m2-registrar.jpg" alt="Registro no celular"><img src="../img/m3-confianca.jpg" alt="Origem e confiança no celular"></div>
+
+<!-- ================= 10 ================= -->
+<h2 class="pb">10. Rastreabilidade e coerência entre artefatos</h2>
+<p>Toda tela tem requisitos que a justificam, e todo requisito funcional aparece em ao menos uma tela. A matriz mostra também em que ponto dos diagramas e da arquitetura cada tela se apoia.</p>
+<table class="mx"><thead><tr><th>Tela</th><th>RF</th><th>RNF</th><th>Regras</th><th>Sequência / Estados</th><th>Componente (arquitetura)</th></tr></thead><tbody>
+{{MATRIZ}}</tbody></table>
+<h3>Verificação de cobertura</h3>
+<table class="mx"><thead><tr><th>Item exigido pelo desafio</th><th>Onde está</th></tr></thead><tbody>
+<tr><td>Origem e nível de confiança visíveis</td><td>T05 (tela dedicada) + selo de confiança em T02, T03, T04, T06, T07b, T08; origem por observação em T04 e T05</td></tr>
+<tr><td>Painel de acompanhamento (mapa/visão geral)</td><td>T02</td></tr>
+<tr><td>Lista/detalhe de alertas</td><td>T03 e T04</td></tr>
+<tr><td>Central de notificações</td><td>T06</td></tr>
+<tr><td>Registro comunitário de ocorrência</td><td>T07 (3 etapas) e T07b (confirmação)</td></tr>
+<tr><td>Tempo de atualização, disponibilidade, escalabilidade, usabilidade, segurança/LGPD</td><td>RNF01, RNF02–03, RNF04, RNF05, RNF06–08 (seção 4); arquitetura (seção 8); T02/T09/T10, T11</td></tr></tbody></table>
+
+<!-- ================= 11 ================= -->
+<h2>11. Verificação, limitações e próximos passos</h2>
+<h3>Como conferimos</h3>
+<ul>
+<li>Regras de negócio: 16 testes automatizados (<code>tests/engine.test.js</code>) cobrem RN-01 a RN-04, limites de níveis, SLA e a máquina de estados, inclusive o exemplo trabalhado da seção 5.</li>
+<li>Fluxo de ponta a ponta: percurso automatizado do protótipo em navegador (entrada → painel → detalhe → origem e confiança → notificações → registro → validação → análises → fontes → privacidade → simulador), sem erros de execução, em desktop e celular.</li>
+<li>Coerência: telas, RF/RNF, diagramas e arquitetura foram conferidos entre si na matriz da seção 10.</li></ul>
+<h3>Limitações</h3>
+<ul>
+<li>Backend, sensores e APIs externas são <b>simulados</b> no navegador; não há persistência entre recargas nem envio real de push/SMS.</li>
+<li>O mapa é estilizado (bairros fictícios). Os números da tela de Análises (como 92% de alertas procedentes e SUS 84) são só exemplos e teriam de ser medidos com o sistema em operação.</li>
+<li>Descarte automático por TTL e encerramento automático por 3 ciclos (RN-06) estão especificados, mas o protótipo os executa manualmente pelo agente.</li></ul>
+<h3>Próximos passos</h3>
+<ul>
+<li>Implementar o backend conforme a arquitetura (ingestão MQTT/REST, broker, motor de regras como serviço) e integrar APIs reais da Defesa Civil e de concessionárias (formato CAP).</li>
+<li>Calibrar pesos e limiares das regras com dados históricos e medir precisão/recall dos alertas.</li>
+<li>Testes de usabilidade com moradores, inclusive idosos, e auditoria de acessibilidade (WCAG 2.1 AA); elaborar o RIPD com o encarregado de dados.</li></ul>
+</body></html>
