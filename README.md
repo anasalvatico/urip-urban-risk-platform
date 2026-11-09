@@ -23,8 +23,6 @@ Não há instalação nem build. Opções:
 1. Abrir `index.html` no navegador; **ou**
 2. Na pasta do projeto: `python3 -m http.server 8000` e acessar <http://localhost:8000>.
 
-**Deploy no GitHub Pages:** Settings → Pages → Branch `main`, pasta `/ (root)`.
-
 ## Telas (12)
 T01 Entrada e consentimento LGPD · T02 Painel (mapa) · T03 Lista de alertas · T04 Detalhe do alerta · T05 **Origem e nível de confiança** · T06 Central de notificações · T07 Registro comunitário (3 etapas + confirmação) · T08 Fila de validação (agente) · T09 Análises · T10 Fontes de dados · T11 Privacidade (LGPD) · T12 Simulador de fluxo (fonte → notificação).
 
