@@ -1,1 +1,4 @@
 __pycache__/
+# roteiro do vídeo fica só local
+docs/roteiro-video.md
+docs/build/_doc_build.html
