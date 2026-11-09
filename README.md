@@ -28,13 +28,6 @@ Não há instalação nem build. Opções:
 ## Telas (12)
 T01 Entrada e consentimento LGPD · T02 Painel (mapa) · T03 Lista de alertas · T04 Detalhe do alerta · T05 **Origem e nível de confiança** · T06 Central de notificações · T07 Registro comunitário (3 etapas + confirmação) · T08 Fila de validação (agente) · T09 Análises · T10 Fontes de dados · T11 Privacidade (LGPD) · T12 Simulador de fluxo (fonte → notificação).
 
-## Roteiro de demonstração
-1. Entrar como **Morador** e aceitar o consentimento.
-2. No **Painel**, clicar no ponto vermelho (alagamento) → **Ver detalhe** → **Origem e confiança**.
-3. Abrir **Notificações** e **Registrar ocorrência** (3 etapas).
-4. Trocar para **Agente** (seletor no topo) → **Validação** → Confirmar um evento.
-5. No **Painel**, usar o **Simulador de dados** e acompanhar o fluxo com tempos.
-6. Em **Fontes**, clicar em “Simular falha” e ver a confiança cair em **Origem e confiança**.
 
 ## Regras de negócio (resumo)
 - Confiança `C = 0,35·F + 0,25·Fr + 0,25·Co + 0,15·Q` (Alta ≥ 75 · Média 50–74 · Baixa < 50)
