@@ -51,11 +51,8 @@ js/core.js          # estado, pipeline de ingestão, máquina de estados
 js/views.js         # telas
 js/main.js          # roteamento e ações
 tests/engine.test.js
-docs/               # PDF, diagramas (SVG) e scripts de geração
+docs/               # documentação em PDF
 ```
 
 ## Testes
 `node tests/engine.test.js` — 16 testes das regras RN-01 a RN-05 e da máquina de estados.
-
-## Regenerar a documentação
-Edite `docs/build/grupo.json` (nomes, RMs, links) e rode `python3 docs/build/build_pdf.py` (requer Python, Playwright e Chrome).
